@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SensorSync - Revolutionizing Navigation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <script src="SensorSynch.js" defer></script> -->
+    <link rel="stylesheet" href="SensorSynch.css">
+    <style>
+        /* Container to hold both timeline and image slider side by side */
+       
+        .flowchart-container {
+            display: none; /* Hide flowchart after initial sliding */
+        }
+        
+        /* Slider container */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Left Side: Flowchart */
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        /* Right Side: Image Slider & Flowchart */
+        .right-content {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Flowchart Behind Image Slider */
+        .flowchart-container {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            z-index: 1; /* Keeps flowchart behind the slider */
+            opacity: 0.3; /* Adjust visibility */
+        }
+        
+        .flowchart-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
+        
+        #slideshow {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 1s ease;  /* Smooth transition between slides */
+            will-change: transform;
+        }
+
+        
+
+        .slide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+        .timeline {
+            position: relative;
+        }
+
+        .card {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .animate-card {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .card-content {
+            margin-top: 10px;
+        }
+
+        .use-card {
+            cursor: pointer;
+        }
+
+        .use-card:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Hover effect for timeline cards */
+        .timeline .card:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="SensorSync Logo">
+                SensorSync
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-bold">About Us</a>
+                <div class="dropdown">
+                    <a href="#competencies" class="dropbtn">Core Competencies <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#iot">IoT Integration</a>
+                        <a href="#ai">AI-Powered Insights</a>
+                        <a href="#edge">Edge Computing</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#technologies" class="dropbtn">Technologies <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#iot">IoT</a>
+                        <a href="#ml">Machine Learning</a>
+                        <a href="#edge">Edge Computing</a>
+                        <a href="#cloud">Cloud Integration</a>
+                    </div>
+                </div>
+                <a href="#contact" class="nav-bold">Contact</a>
+                <a href="#careers" class="nav-bold">Careers</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content animate-fade-in">
+            <h1>Revolutionizing Navigation with </h1>
+            <h2 class="Name">SensorSync</h2>
+            <p>Combining IoT, AI, and advanced frameworks to deliver real-time road quality assessments and navigation solutions.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-container">
+            <h2 class="section-title3">About Us</h2>
+            <p>SensorSync is an innovative startup redefining real-time navigation and road quality assessment. Leveraging IoT, AI, and edge computing, we bridge gaps in navigation platforms with vehicle-specific guidance and real-time insights, enhancing safety, efficiency, and sustainability in urban transportation.</p>
+        </div>
+        <div class="second-section">
+            <img src="https://st4.depositphotos.com/33417770/40604/v/450/depositphotos_406045936-stock-illustration-road-crosswalk-with-group-of.jpg" alt="">
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="left-content">
+            <div class="title">What Does This Website Offer?</div>
+            <div class="timeline">
+                <div class="card fade-in">
+                    <div class="card-title">Deliver Real-Time Insights</div>
+                    <div class="card-content">Provides real-time sensor data for accurate navigation.</div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-title">Road Quality Assessments</div>
+                    <div class="card-content">Analyzes road conditions using AI-driven insights.</div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-title">Navigation Solutions</div>
+                    <div class="card-content">Enhances navigation with dynamic route optimization.</div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Image Slider Section -->
+        <!-- <div class="right-content">
+            <section id="slideshow">
+                <div class="slides">
+                    <div class="slide-image">
+                        <img src="img1.png" alt="Slide 1">
+                    </div>
+                    <div class="slide-image">
+                        <img src="img2.png" alt="Slide 2">
+                    </div>
+                    <div class="slide-image">
+                        <img src="img3.png" alt="Slide 3">
+                    </div>
+                </div>
+            </section>
+        </div> -->
+        <div class="right-content">
+            <div class="flowchart-container">
+                <img src="flowchart.png" alt="Flowchart" class="flowchart-image">
+            </div>
+            <section id="slideshow">
+                <div class="slides">
+                    <div class="slide-image">
+                        <img src="img1.png" alt="Slide 1">
+                    </div>
+                    <div class="slide-image">
+                        <img src="img2.png" alt="Slide 2">
+                    </div>
+                    <div class="slide-image">
+                        <img src="img3.png" alt="Slide 3">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <section id="competencies" class="competencies">
+        <div class="section-container-com">
+            <h2 class="section-title1">Core Competencies</h2>
+            <div class="competencies-grid">
+                <div class="competency-card" id="iot-card">
+                    <i class="fas fa-plug"></i>
+                    <h3>IoT Integration</h3>
+                    <p id="iot-description" class="hidden">Provides real-time sensor data for accurate navigation.</p>
+                </div>
+                <div class="competency-card" id="iot-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI-Powered Insights</h3>
+                    <p id="iot-description" class="hidden">Optimize routes with advanced machine learning.</p>
+                </div>
+                <div class="competency-card" id="iot-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Edge Computing</h3>
+                    <p id="iot-description" class="hidden">Low-latency decision-making on the go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="technologies" class="technologies">
+        <div class="section-container">
+            <h2 class="section-title2">Technologies We Use</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>IoT</h3>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-robot"></i>
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-server"></i>
+                    <h3>Edge Computing</h3>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Integration</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <div class="contact-image">
+                <img src="logo2.png" alt="Contact Us">
+            </div>
+            <div class="contact-form">
+                <h2 class="section-title">Get in Touch</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section stay-connected">
+                    <h3>Stay Connected</h3>
+                    <p>Revolutionizing navigation through data-driven solutions. Stay updated on our journey.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom-layout">
+                <div class="footer-section quick-links">
+                    <div class="quicklink1">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#about-us">About Us</a></li>
+                            <li><a href="#core-competencies">Core Competencies</a></li>
+                            <li><a href="#technologies">Technologies</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-section follow-us">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section subscribe">
+                    <h3>Subscribe</h3>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 SensorSync. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#terms">Terms & Conditions</a> | <a href="#privacy">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelector(".slides");
+            const totalSlides = document.querySelectorAll(".slide-image").length;
+            let index = 0;
+            let isHovering = false;
+            let slideshowInterval;
+            
+            // Clone the first image and append it to the end for continuous loop
+            const firstSlide = document.querySelector(".slide-image");
+            const clonedSlide = firstSlide.cloneNode(true);
+            slides.appendChild(clonedSlide);
+            
+            // Function to move slides
+            function moveSlide(slow = false) {
+                slides.style.transition = slow ? "transform 15s ease-in-out" : "transform 1.5s ease-in-out";
+                index++;
+        
+                // If we reached the last image (including the cloned slide), reset to the first image instantly
+                if (index >= totalSlides) {
+                    setTimeout(() => {
+                        slides.style.transition = "none"; // Instantly reset without animation
+                        slides.style.transform = "translateX(0%)"; // Move back to the first image
+                        index = 0; // Reset index
+                    }, slow ? 3000 : 1500); // Delay ensures a smooth transition
+                } else {
+                    slides.style.transform = `translateX(-${index * 100}%)`;
+                }
+            }
+            
+            // Automatic slideshow (5s per slide)
+            function startSlideshow() {
+                return setInterval(() => {
+                    if (!isHovering) {
+                        moveSlide();
+                    }
+                }, 10000);
+            }
+        
+            // Start the slideshow
+            slideshowInterval = startSlideshow();
+            
+            // Hover Effect - Slow Sliding on Mouse Move
+            slides.addEventListener("mouseenter", () => {
+                isHovering = true;
+                clearInterval(slideshowInterval);
+                moveSlide(true);
+            });
+            
+            // Resume Normal Slideshow
+            slides.addEventListener("mouseleave", () => {
+                isHovering = false;
+                slideshowInterval = startSlideshow();
+            });
+        });
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll(".card");
+        
+            // Use IntersectionObserver to show timeline cards when scrolled into view
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                },
+                { threshold: 0.9 } // Adjust threshold for better timing
+            );
+        
+            // Observe each card
+            cards.forEach((card) => {
+                observer.observe(card);
+            });
+        });
+        
+        
+        
+        </script>
+</body>
+
+</html>
